@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aixworkforce360-backend
+spec:
+  selector:
+    app: aixworkforce360-backend
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000

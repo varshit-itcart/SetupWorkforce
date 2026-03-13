@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aixworkforce360-ingress
+spec:
+  rules:
+    - host: aixworkforce360.com
+      http:
+        paths:
+          - path: /api/
+            pathType: Prefix
+            backend:
+              service:
+                name: aixworkforce360-backend
+                port:
+                  number: 8000
