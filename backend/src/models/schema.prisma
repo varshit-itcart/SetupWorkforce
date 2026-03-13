@@ -4,7 +4,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -17,4 +16,20 @@ model User {
   // ... other fields
   @@index([email])
   @@index([role])
+}
+
+model AuditLog {
+  id            String   @id @default(uuid())
+  userId        String?
+  userEmail     String?
+  action        String
+  entityType    String
+  entityId      String?
+  ipAddress     String?
+  userAgent     String?
+  requestMethod String
+  requestPath   String
+  statusCode    Int
+  errorMessage  String?
+  createdAt     DateTime @default(now())
 }

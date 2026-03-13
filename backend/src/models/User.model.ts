@@ -1,30 +1,20 @@
-import { Entity, PrimaryGeneratedColumn, Column, Index, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+// Prisma model file, not using TypeORM
 
-@Entity('users')
+// Prisma model, plain TypeScript class
 export class User {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
-  @Column({ unique: true })
-  @Index()
-  email: string;
+  email!: string;
 
-  @Column({ nullable: true })
-  passwordHash: string;
+  passwordHash!: string;
 
-  @Column()
-  firstName: string;
+  firstName!: string;
 
-  @Column()
-  lastName: string;
+  lastName!: string;
 
-  @Column()
-  @Index()
-  role: string;
+  role!: string;
 
-  @CreateDateColumn()
-  createdAt: Date;
+  createdAt!: Date;
 
-  @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt!: Date;
 }
