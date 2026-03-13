@@ -8,7 +8,8 @@ export const errorMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  logger.error('Error:', {
+  logger.error({
+    msg: 'Error',
     message: error.message,
     stack: error.stack,
     path: req.path,

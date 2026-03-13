@@ -17,7 +17,7 @@ import {
 export class AuthController {
 	async register(req: AuthRequest, res: Response, next: NextFunction) {
 		try {
-			const { email, password, firstName, lastName, role, department, position } = req.body;
+			const { email, password, firstName, lastName, role } = req.body;
 
 			// Check if user exists
 			const existingUser = await prisma.user.findUnique({
@@ -39,8 +39,6 @@ export class AuthController {
 					firstName,
 					lastName,
 					role: role || 'employee',
-					department,
-					position,
 				},
 				select: {
 					id: true,
@@ -48,9 +46,6 @@ export class AuthController {
 					firstName: true,
 					lastName: true,
 					role: true,
-					department: true,
-					position: true,
-					createdAt: true,
 				},
 			});
 

@@ -6,10 +6,6 @@ const prismaClientSingleton = () => {
     log: process.env.NODE_ENV === 'development' 
       ? ['query', 'error', 'warn'] 
       : ['error'],
-    adapter: {
-      provider: 'postgres',
-      connectionString: 'postgres://postgres:postgres@localhost:5432/postgres',
-    },
   });
 };
 
@@ -23,7 +19,4 @@ if (process.env.NODE_ENV !== 'production') {
   globalThis.prisma = prisma;
 }
 
-// Graceful shutdown
-prisma.$on('beforeExit' as never, async () => {
-  logger.info('Prisma client disconnecting...');
-});
+// Graceful shutdown handled in index.ts
